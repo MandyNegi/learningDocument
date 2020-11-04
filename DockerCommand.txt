@@ -1,0 +1,104 @@
+please use given command to build and run docker locally.
+
+
+Vm options:
+-ea -Druntime.environment=LOCAL -Dspring.profiles.active=LOCAL -DDOMAIN_PID=xxxxxx -DDOMAIN_PASSWORD=yyyy -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf
+
+To build dokcer image: 
+docker build -t ws_loadplanning_operationalmove:latest .
+
+To Run dokcer image: 
+docker run -p 8085:8085 --name=ws_loadplanning_operationalmove -e JAVA_OPTS="-ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL  -DDOMAIN_PID=jcnt348 -DDOMAIN_PASSWORD=jb9153 -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf" ws_loadplanning_operationalmove:latest
+
+
+
+kubectl run discovery –image=ws_loadplanning_operationalmove –image-pull-policy=Never –port=8080
+
+kubectl run --generator=run-pod/v1 loadplanningoperationalmove --image=ws_loadplanning_operationalmove:0.0.1 --image-pull-policy=Never
+
+kubectl run loadplanningoperationalmove --image=ws_loadplanning_operationalmove:latest --port=8989 --generator=run-pod/v1  --image-pull-policy=Never
+
+
+
+
+minikube start --vm-driver=hyperv 
+
+
+sudo kubectl run {DEPLOYMENT_NAME} --image= {YOUR_IMAGE} --port=8080
+
+
+
+minikube start --show-libmachine-logs=true --stderrthreshold=0
+
+minikube start vm-driver=hyperv hyperv-virtual-switch=my_network_switch
+
+
+kubectl run consul --image=consul:0.8.3 --image-pull-policy=IfNotPresent --port=8500 --env="CONSUL_LOCAL_CONFIG={'acl_datacenter':'dc1','acl_default_policy':'allow','acl_down_policy':'extend-cache','acl_master_token':'the_one_ring','bootstrap_expect':1,'datacenter':'dc1','data_dir':'/usr/local/bin/consul.d/data','server':true}"
+
+
+docker build -t listener_operationsexecution_dispatch:latest .
+
+
+docker run -p 8085:8085 --name=listener_operationsexecution_dispatch -e JAVA_OPTS="-ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL  -DDOMAIN_PID=jcnt348 -DDOMAIN_PASSWORD=jb9153 -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf" listener_operationsexecution_dispatch:latest
+
+
+kubectl run listener_operationsexecution_dispatch --image=listener_operationsexecution_dispatch --image-pull-policy=IfNotPresent --port=8500 --env= -e JAVA_OPTS="-ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL  -DDOMAIN_PID=jcnt348 -DDOMAIN_PASSWORD=jb9153 -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf"
+
+
+kubectl create -f C:\Users\jcnt348\kubernet\kube.yml
+
+ws_loadplanning_operationalplan
+
+docker build -t ws_loadplanning_operationalplan:latest .
+
+docker run -p 8085:8085 --name=ws_loadplanning_operationalplan -e JAVA_OPTS="-ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL  -DDOMAIN_PID=jcnt348 -DDOMAIN_PASSWORD=jb9153 -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf" ws_loadplanning_operationalplan:latest
+
+docker build -t listener_operationsexecution_monitoring_resourceplan:latest .
+
+
+docker run -p 8085:8085 --name=listener_operationsexecution_monitoring_resourceplan -e JAVA_OPTS="-ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL  -DDOMAIN_PID=jcnt348 -DDOMAIN_PASSWORD=jb9153 -Djava.security.krb5.conf=C:\Users\jcnt348\krb5.conf" listener_operationsexecution_monitoring_resourceplan:latest
+
+listener_operationsexecution_monitoring_resourceplan
+
+kubectl logs --follow [Pod name]
+
+kubectl logs -f deployment/listener-operationsexecution-dispatch
+
+
+$ kubectl create configmap game-config --from-file=docs/user-guide/configmap/kubectl
+
+kubectl describe configmaps game-config
+
+kubectl get configmaps game-config -o yaml
+
+kubectl create configmap special-config --from-literal=special.how=very --from-literal=special.type=charm
+
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+
+Crate a pod:
+kubectl run --generator=run-pod/v1 nginx --image=nginx
+kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+
+kubectl create deployment --image=nginx nginx
+
+kubectl create deployment --image=nginx nginx --dry-run -o yaml
+
+kubectl create namespace test-123 --dry-run -o json
+
+where -o = output 
+
+kubectl expose pod redis --port=6379 --name redis-service
+
+kubectl create deployment webapp --image= imageName 
+kubectl scale deployment --replicas=3
+
+kubectl create deployment -f file.deployment.yml --save-congfig --record
+
+
+kubectl config set-credentials userName --username=kubeuser --password=kubepassword
+
+kubectl config unset users.userName
+
+
+
+
