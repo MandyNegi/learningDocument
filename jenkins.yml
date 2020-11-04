@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: jenkins-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template: 
+    metadata: 
+      labels: 
+        app: jenkins
+    spec:   
+      containers: 
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        imagePullPolicy: IfNotPresent
+        ports: 
+         - containerPort: 8080  		 
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+      volumes:
+      - name: jenkins-home
+        emptyDir: {}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: jenkins
+  namespace: jenkins-test
+  labels:
+    app: jenkins
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30000
+    name: https
+  selector:
+    app: jenkins	
+    
+    
+    
