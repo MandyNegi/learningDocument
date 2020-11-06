@@ -1,17 +1,5 @@
 docker-kub-ver-nov-batch1-2020
 
-1 234567890
-============================
-Rajesh Kumar
-======================================
-Demo - AWS
-Lab - L n D
-======================
-9:30 AM - 6:30 PM IST. 6:00 PM - Assignment 
-=============================
-2 BREAK - TEA, Coffee, Restroom - 20 MINS. 11.15 AM & 4:00 PM
-1 BREAK - 1 PM to 2 PM
------------------------------
 Pre Test - Docker and Kubernetes
 Post Test - Docker and Kubernetes
 =====================================
