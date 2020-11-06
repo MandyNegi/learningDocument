@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: demo-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-demo-kube
+  namespace: demo-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: ws-demo-kube
+  template: 
+    metadata: 
+      labels: 
+        app: ws-demo-kube
+    spec:   
+      containers: 
+      - name: ws-demo-kube
+        image: ws_demo_kube
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: JAVA_OPTS
+          value: -Dserver.port=8081 -ea -Druntime.environment=LOCAL  -Dspring.profiles.active=LOCAL
+        ports: 
+         - containerPort: 8080  
+         
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ws-demo-kube
+  namespace: demo-test
+  labels:
+    app: ws-demo-kube
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    name: https
+  selector:
+    app: ws-demo-kube
