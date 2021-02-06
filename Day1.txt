@@ -1,3 +1,6 @@
+youtube:
+https://www.youtube.com/watch?v=4ytkgaNiork&list=RDCMUCrXr49kBvXJeQMMl2693c4g&index=2
+
 docker-kub-ver-nov-batch1-2020
 
 Pre Test - Docker and Kubernetes
